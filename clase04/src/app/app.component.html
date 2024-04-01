@@ -1,0 +1,113 @@
+<style>
+
+</style>
+<hr>
+
+<h2>Desafio Clase 4 // Estudiantes</h2>
+
+<style>
+.table img{
+  width: 100px;
+}
+.bgverde{
+  background-color: greenyellow;
+}
+.bgrojo{
+  background-color: tomato;
+}
+
+</style>
+
+
+
+
+
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Imagen</th>
+      <th scope="col">Apellido, Nombre</th>
+      <th scope="col">Edad</th>
+      <th scope="col">Aprobado</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    
+
+    <tr *ngFor="let alumno of alumnos; let i = index">
+      <td><img [src]="alumno.img" alt="" ></td>
+      <td>{{ i+1 }}) {{ alumno.apellido }}, {{ alumno.nombre }}</td>
+      <td>{{ alumno.edad }}</td>
+      <td [ngClass]="alumno.aprobado ? 'bgverde' : 'bgrojo'">
+        {{ alumno.aprobado ? 'Aprobado' : 'Reprobado' }}
+      </td>
+    </tr>
+
+    
+  </tbody>
+</table>
+
+<hr>
+<!-- 
+
+  [ngClass]="hasError ? 'error' : 'success'" 
+
+  [ngClass]="{
+  success: !hasError,
+  error: hasError
+  }"
+
+-->
+
+<h2>Atributos</h2>
+<p [ngClass]="hasError ? 'error' : 'success'" [ngStyle]="{
+  'text-decoration': hasError? 'underline' : 'unset'
+  }" [style.font-weight]="hasError ? 700 : 400">
+  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+</p>
+
+<button (click)="alternarError()">click</button>
+
+<hr>
+
+<h2>Ciclos</h2>
+<ul>
+  <li *ngFor="let student of students; let i = index">
+    {{ i+1 }} {{ student }}
+  </li>
+</ul>
+
+<hr>
+<h2>Condicionales</h2>
+<button (click)="mostrarListado = !mostrarListado">Ver Listado</button>
+<ul *ngIf="mostrarListado">
+  <li *ngFor="let student of students; let i = index">
+    {{ i+1 }} {{ student }}
+  </li>
+</ul>
+
+<hr>
+<h2>Switch</h2>
+
+<div [ngSwitch]="status">
+  <p *ngSwitchCase="'en-camino'">Su paquete esta... en camino</p>
+  <p *ngSwitchCase="'entregado'">Su paquete fue... entregado</p>
+  <p *ngSwitchCase="'en-reparacion'">Su paquete esta... en reparacion</p>
+</div>
+
+<hr>
+<h2>Tipos de enlazamiento (binding)</h2>
+<p>Enlazamiento de entrada: []</p>
+<p>Enlazamiento de salida: ()</p>
+<p>Enlazamiento de doble sentido: [()]</p>
+
+<hr>
+<h2>Pipes</h2>
+<h3>date</h3>
+<p>{{ fecha | date : 'dd/MM/YYYY' }}</p>
+
+<h3>UPPERCASE / lowercase</h3>
+<p>{{ "Lorem ABC blabla" | uppercase }}</p>
+<p>{{ "Lorem ABC blabla" | lowercase }}</p>

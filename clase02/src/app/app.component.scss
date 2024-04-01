@@ -1,0 +1,29 @@
+.main-grid-layout{
+    height: 100vh;
+    background-color: #cccc;
+    text-align: center;
+}
+
+.div-gral{
+    background-color: yellow;
+    border: 1px solid black;
+    padding: 20px;
+    
+    margin: 20px;
+}
+
+.div-top{
+    text-align: left;
+}
+
+.div-content{
+    display: flex;
+    min-height: 60vh;
+}
+.div-left{
+    width: 20%;
+}
+.div-right{
+    width: 100%;
+    text-align: left;
+}
