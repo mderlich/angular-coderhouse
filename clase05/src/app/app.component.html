@@ -1,0 +1,20 @@
+<!-- <app-my-modal [visible]="modalVisible" (close)="modalVisible=false" /> -->
+<app-my-modal [(visible)]="modalVisible">
+Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, totam earum assumenda dolores quia natus asperiores nam autem voluptatibus deserunt saepe fugiat qui possimus eius eveniet libero. Doloremque, veniam reiciendis.    
+</app-my-modal>
+
+<button (click)="modalVisible = true">Crear Usuario</button>
+<!--
+    []      >> data de padre a hijo
+    ()      >> data de hijo a padre 
+    [()]    >> data doble sentido
+ -->
+<h2>Usuarios Aprobados</h2>
+<app-lista-usuarios 
+[usuarios]="usuariosAprobados" 
+(deleteUser)="deleteUser($event, 'usuariosAprobados')" />
+
+<h2>Usuarios Desaprobados</h2>
+<app-lista-usuarios 
+[usuarios]="usuariosDesaprobados" 
+(deleteUser)="deleteUser($event, 'usuariosDesaprobados')" />

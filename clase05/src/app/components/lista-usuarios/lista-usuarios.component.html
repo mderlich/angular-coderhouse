@@ -1,0 +1,9 @@
+<!-- el padre es el componente app -->
+<ul class="list-group" #myList>
+    <li *ngFor="let usuario of usuarios; let i = index" class="list-group-item">
+        {{ usuario.firstName + ' ' + usuario.lastName}}
+        <button class="btn btn-danger" (click)="deleteUser.emit(i)">
+            X
+        </button>
+    </li>
+</ul>
