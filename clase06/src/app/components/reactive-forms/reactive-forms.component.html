@@ -1,0 +1,50 @@
+<style>
+    .styleForm {
+        padding: 50px;
+    }
+</style>
+<div class="row styleForm">
+
+    <h1>Reactive Form</h1>
+    <!-- 1er columna -->
+    <div class="col-6">
+
+        <!-- [formGroup]="myForm" -->
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="row g-3">
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <!-- formControlName="email" -->
+                <!-- [ngClass]="emailValid ? 'is-valid' : 'is-invalid'" -->
+                <input 
+                formControlName="email" 
+                [ngClass]="emailControl ? 'is-valid' : 'is-invalid'"
+
+                type="email"
+                class="form-control"   
+                id="inputEmail4">
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Password</label>
+                <input formControlName="password" type="password" class="form-control" id="inputPassword4">
+            </div>
+
+
+            <!-- boton submit -->
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </div>
+            
+        </form>
+    </div>
+
+    <!-- 2da columna -->
+    <div class="col-6">
+        
+            {{ myForm.status }}
+            
+        <pre>
+        {{ myForm.value | json}}
+        </pre>
+    </div>
+
+</div>

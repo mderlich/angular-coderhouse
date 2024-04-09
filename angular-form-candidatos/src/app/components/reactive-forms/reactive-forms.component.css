@@ -1,0 +1,32 @@
+.contenedor{
+    margin: 30px;
+  }
+  
+.styleForm {
+    padding: 50px;
+}
+
+label {
+    font-weight: bold;
+}
+
+.bgc {
+    background-color: aqua;
+}
+
+input::placeholder {
+    text-transform: capitalize;
+}
+
+.invalid-form {
+    color: #dc3545;
+    /* Color de texto rojo */
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+
+.cust-btn-width {
+    width: 100%;
+}

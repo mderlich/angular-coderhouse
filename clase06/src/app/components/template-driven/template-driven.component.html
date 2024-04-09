@@ -1,0 +1,56 @@
+<style>
+    .styleForm {
+        padding: 50px;
+    }
+</style>
+<div class="row styleForm">
+
+    <!-- 1er columna -->
+    <div class="col-6">
+        <h1>Template Driven Form</h1>
+
+        <!--  (ngSubmit)="onSubmit(myForm)" #myForm="ngForm"   -->
+        <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm" class="row g-3">
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <!-- [(ngModel)]="myFormModel.email" name="email" -->
+                <input [(ngModel)]="myFormModel.email" name="email" #emailControl="ngModel"
+                    [class.is-valid]="emailControl.valid"
+                    [class.is-invalid]="emailControl.touched && emailControl.invalid" required=""
+                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" type="email" class="form-control"
+                    id="inputEmail2">
+                <!-- errores... -->
+                <div *ngIf="emailControl.hasError('required')" class="invalid-feedback">
+                    Este campo es requerido
+                </div>
+                <div *ngIf="emailControl.hasError('pattern')" class="invalid-feedback">
+                    Este no es un mail valido
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Password</label>
+                <input [(ngModel)]="myFormModel.password" name="password" type="password" class="form-control"
+                    id="inputPassword2">
+            </div>
+
+
+            <!-- boton submit -->
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Sign in</button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- 2da columna -->
+    <div class="col-6">
+
+        {{ myForm.status }}
+
+        <pre>
+            {{ myForm.value | json}}
+            </pre>
+
+    </div>
+
+</div>

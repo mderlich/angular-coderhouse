@@ -1,0 +1,290 @@
+
+<div class="contenedor">
+  
+<div class="row">
+  <div class="col-md-6 bgc">
+    <h1>Sumate a nuestra empresa</h1>
+  </div>
+  
+  <div class="col-md-6 bgc">
+    {{ userFormGroup.status }}
+    <br>
+    errores campo 'nivelEducacion'
+    <pre>{{ userFormGroup.controls['nivelEducacion'].errors | json}}</pre>
+    <pre>{{ userFormGroup.value | json}}</pre>
+  </div>
+</div>
+  
+
+
+<form [formGroup]="userFormGroup" (ngSubmit)="enviarRF()" class="row g-3" >
+
+    <!-- -------------------------------------------------- -->
+    <!-- apellido -->
+    <div class="col-md-6">
+      <label for="apellido" class="form-label">Apellido</label>
+      <input 
+        formControlName="apellido" 
+        id="apellido" 
+        placeholder="apellido"
+        [ngClass]="getValidationClass('apellido')"
+        class="form-control" 
+        type="text" 
+        autocomplete="off"
+      >
+
+      <div class="invalid-feedback">
+        <div *ngIf="hasError('apellido', 'required')">Campo requerido</div>
+        <div *ngIf="hasError('apellido', 'minlength')">Debe tener al menos {{ minLength }} caracteres</div>
+        <div *ngIf="hasError('apellido', 'maxlength')">Debe tener como maximo {{ maxLength }} caracteres</div>
+        <div *ngIf="hasError('apellido', 'VerificarCaracteresValidos')">Debe contener carácteres válidos</div>
+      </div>  
+
+    </div>
+
+    <!-- nombre -->
+    <div class="col-md-6">
+
+      <label for="nombre" class="form-label">Nombre</label>
+      <input 
+      formControlName="nombre" 
+      id="nombre" 
+      placeholder="nombre"
+      [ngClass]="getValidationClass('nombre')"
+      class="form-control" 
+      type="text"
+      autocomplete="off"
+      >
+
+      <div class="invalid-feedback">
+        <div *ngIf="hasError('nombre', 'required')">Campo requerido</div>
+        <div *ngIf="hasError('nombre', 'minlength')">Debe tener al menos {{ minLength }} caracteres</div>
+        <div *ngIf="hasError('nombre', 'maxlength')">Debe tener como maximo {{ maxLength }} caracteres</div>
+        <div *ngIf="hasError('nombre', 'VerificarCaracteresValidos')">Debe contener carácteres válidos</div>
+      </div>  
+
+    </div>
+    <!-- -------------------------------------------------- -->
+
+
+    <!-- email -->
+    <div class="col-12">
+        <label 
+          for="email" class="form-label">Correo electrónico</label>
+        <input 
+          formControlName="email" 
+          id="email" 
+          placeholder=""
+          [ngClass]="getValidationClass('email')"
+          class="form-control" 
+          type="email" 
+          autocomplete="off"
+        >
+
+        <div class="invalid-feedback">
+          <div *ngIf="hasError('email', 'required')">Campo requerido</div>
+          <div *ngIf="hasError('email', 'pattern')">El correo electrónico no tiene un formato válido</div>
+        </div>  
+
+      </div>    
+
+
+
+    <!-- numero de telefono -->
+    <div class="col-12">
+        <label 
+        for="numeroTelefono" class="form-label">Número de teléfono</label>
+        <input 
+        formControlName="numeroTelefono" 
+        id="numeroTelefono" 
+        placeholder=""
+        [ngClass]="getValidationClass('numeroTelefono')"
+        class="form-control" 
+        type="tel" 
+        autocomplete="off"        
+        >
+
+        <div class="invalid-feedback">
+          <div *ngIf="hasError('numeroTelefono', 'required')">Campo requerido</div>
+          <div *ngIf="hasError('numeroTelefono', 'minlength')">Debe tener al menos {{ minLength }} caracteres</div>
+          <div *ngIf="hasError('numeroTelefono', 'maxlength')">Debe tener como maximo {{ maxLength }} caracteres</div>
+          <div *ngIf="hasError('numeroTelefono', 'pattern')">Debe contener carácteres válidos</div>
+        </div> 
+    </div>
+
+    <!-- -------------------------------------------------- -->
+    <!-- ciudad -->
+    <div class="col-md-4">
+        <label 
+        for="ciudad" class="form-label">Ciudad</label>
+        <input 
+        formControlName="ciudad" 
+        id="ciudad" 
+        placeholder="ciudad"
+        [ngClass]="getValidationClass('ciudad')"
+        class="form-control" 
+        type="text" 
+        autocomplete="off" 
+        >
+
+        <div class="invalid-feedback">
+          <div *ngIf="hasError('ciudad', 'required')">Campo requerido</div>
+          <div *ngIf="hasError('ciudad', 'minlength')">Debe tener al menos {{ minLength }} caracteres</div>
+          <div *ngIf="hasError('ciudad', 'maxlength')">Debe tener como maximo {{ maxLength }} caracteres</div>
+          <div *ngIf="hasError('ciudad', 'VerificarCaracteresValidos')">Debe contener carácteres válidos</div>
+        </div> 
+
+    </div>
+
+    <!-- provincia -->
+    <div class="col-md-4">
+        <label 
+        for="provincia" class="form-label">Provincia</label>
+        <input 
+        formControlName="provincia" 
+        id="provincia" 
+        placeholder="provincia"
+        [ngClass]="getValidationClass('provincia')"
+        class="form-control" 
+        type="text" 
+        autocomplete="off"         
+        >
+
+        <div class="invalid-feedback">
+          <div *ngIf="hasError('provincia', 'required')">Campo requerido</div>
+          <div *ngIf="hasError('provincia', 'minlength')">Debe tener al menos {{ minLength }} caracteres</div>
+          <div *ngIf="hasError('provincia', 'maxlength')">Debe tener como maximo {{ maxLength }} caracteres</div>
+          <div *ngIf="hasError('provincia', 'VerificarCaracteresValidos')">Debe contener carácteres válidos</div>
+        </div> 
+    </div>
+
+    <!-- pais -->
+    <div class="col-md-4">
+        <label 
+        for="pais" class="form-label">País</label>
+        <input 
+        formControlName="pais" 
+        id="pais" 
+        placeholder="pais"
+        [ngClass]="getValidationClass('pais')"
+        class="form-control" 
+        type="text" 
+        autocomplete="off"         
+        >
+
+        <div class="invalid-feedback">
+          <div *ngIf="hasError('pais', 'required')">Campo requerido</div>
+          <div *ngIf="hasError('pais', 'minlength')">Debe tener al menos {{ minLength }} caracteres</div>
+          <div *ngIf="hasError('pais', 'maxlength')">Debe tener como maximo {{ maxLength }} caracteres</div>
+          <div *ngIf="hasError('pais', 'VerificarCaracteresValidos')">Debe contener carácteres válidos</div>
+        </div> 
+    </div>      
+    <!-- -------------------------------------------------- -->
+    
+    <!-- nivel Educacion -->
+    <div class="col-12">
+        <label for="nivelEducacion" class="form-label">Nivel de educación</label>
+
+        <select 
+          id="nivelEducacion" 
+          formControlName="nivelEducacion" 
+          [ngClass]="getValidationClass('nivelEducacion')"
+          class="form-select"
+        >
+
+          <option value="" disabled selected>Seleccione...</option>
+          <option value="primario">Primario</option>
+          <option value="secundario">Secundario</option>
+          <option value="terciario">Terciario</option>
+          <option value="universitario">Universitario</option>
+          <option value="posgrado">Posgrado</option>
+
+        </select>
+
+        <div class="invalid-feedback">
+          <div *ngIf="hasError('nivelEducacion', 'required')">Campo requerido</div>
+          <div *ngIf="hasError('nivelEducacion', 'VerificarCoincidencias')">Debe indicar una opcion valida</div>
+        </div> 
+
+    </div>
+    <!-- -------------------------------------------------- -->
+
+    <!-- Aplicar para... -->
+    <div class="col-12">
+        <label for="aplicarPara" class="form-label">Aplicar para</label>
+        <select 
+          id="aplicarPara" 
+          formControlName="aplicarPara" 
+          [ngClass]="getValidationClass('aplicarPara')"
+          class="form-select"
+        >
+          <option value="" disabled selected>Seleccione...</option>
+          <option value="postulacion-general">Postulacion General</option>
+          <option value="developer">Developer</option>
+
+        </select>
+
+        <div class="invalid-feedback">
+          <div *ngIf="hasError('aplicarPara', 'required')">Campo requerido</div>
+          <div *ngIf="hasError('aplicarPara', 'VerificarCoincidencias')">Debe indicar una opcion valida</div>
+        </div> 
+
+    </div>
+    <!-- -------------------------------------------------- -->
+
+    <!-- Carga tu CV -->
+    <div class="mb-3">
+        <label for="cargaCV" class="form-label">Carga tu CV</label>
+        <input 
+          id="cargaCV"
+          formControlName="cargaCV" 
+          [ngClass]="getValidationClass('cargaCV')"
+          class="form-control" 
+          type="file" 
+        >
+
+            <!-- 
+          accept=".pdf, .doc, .docx"
+    -->
+    
+    
+        <div class="invalid-feedback">
+          <div *ngIf="hasError('cargaCV', 'required')">Campo requerido</div>
+          <div *ngIf="hasError('cargaCV', 'VerificarArchivo')">Debe pesar menos de XX bytes</div>
+        </div> 
+    </div>
+
+
+
+
+
+
+    <!-- BOTON -->
+    <div class="col-12">
+      <button 
+        type="submit" 
+        class="btn cust-btn-width"
+        [disabled]="userFormGroup.invalid"
+        [ngClass]="{
+          'btn-primary': !userFormGroup.invalid,
+          'btn-secondary': userFormGroup.invalid
+        }"
+      >
+      Enviar
+    </button>
+
+
+
+    </div>
+
+    <div *ngIf="userFormGroup.invalid" class="invalid-form">
+      ( Debes completar todos los campos correctamente antes de enviar. )
+    </div>
+    
+
+
+  </form>
+
+<!-- ---------------------------- -->
+
+</div>
